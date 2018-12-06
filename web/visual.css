@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.login-form{
+    display: block;
+    width: 250px;
+    height: 100px;
+    margin: 150px auto;
+    padding: 5px 10px;
+    background-color: aquamarine;
+    border: black solid 2px;
+    /*align-items: center;*/
+    line-height: 40px;
+    border-radius: 20px;
+    /*vertical-align: bottom;*/
+}
+
+.form-field{
+    display: inline-block;
+    float: right;
+}
+
+.submit-button{
+    display: block;
+    margin: 0 auto;
+}
+
+.browser-info{
+    display: block;
+    margin: 200px auto;
+    padding: 5px 10px;
+    width: 500px;
+    background-color: bisque;
+    border-radius: 20px;
+    line-height: 40px;
+}
