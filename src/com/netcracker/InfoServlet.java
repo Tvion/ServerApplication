@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @WebServlet(name = "InfoServlet", urlPatterns = "/info")
@@ -26,7 +25,7 @@ public class InfoServlet extends HttpServlet {
         sb.append("<body>");
         sb.append("<div class=\"browser-info\">");
         sb.append("<b>Today</b> is " + date + "<br/>");
-        sb.append("<b>Browser Info</b> <br/>" + BrowserName + "<br/>");
+        sb.append("<b>Browser Info:</b> <br/>" + BrowserName + "<br/>");
         sb.append("</div>");
         sb.append("</body>");
         sb.append("</html>");

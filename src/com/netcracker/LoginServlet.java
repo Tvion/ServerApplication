@@ -22,14 +22,20 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
         Pattern name = Pattern.compile("^[a-zA-Z]{3,25}$");
         Matcher matcher = name.matcher(login);
         sb.append("<html>");
+        sb.append("<head>");
+        sb.append("<title>\"" + "Log in" +"\"</title>");
+        sb.append("<link rel=\"stylesheet\" href=\"visual.css\"/>");
+        sb.append("</head>");
         sb.append("<body>");
         if (!matcher.matches()) {
             sb.append("Name must contains 3-15 latin characters" + "<br/>");
         } else if (!requiredPassword.equals(password)) {
             sb.append("Password must be \"" + requiredPassword + "\"");
         } else {
-            sb.append("We are glad to see you, " + "<b>" + login + "</b>" + "<br/>");
-            sb.append("We are glad to see your password: " + "<b>" + password + "</b>" + "<br/>");
+            sb.append("<center>We are glad to see you, " + "<b>" + login + "</b>" + "</center><br/>");
+            sb.append("<center>We are glad to see your password: " + "<b>" + password + "</b>" + "</center><br/>");
+            sb.append("<center><a href=\"/email.html\"><h1>Sent Email</h1></a></center>");
+            sb.append("<center><a href=\"/info\"><h1>Get info</h1></a></center>");
         }
         sb.append("</body>");
         sb.append("</html>");
