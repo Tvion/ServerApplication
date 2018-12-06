@@ -8,7 +8,7 @@
 </welcome-file-list>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>com.netcracker.LoginServlet</servlet-class>
+        <servlet-class>com.netcracker.servlets.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>

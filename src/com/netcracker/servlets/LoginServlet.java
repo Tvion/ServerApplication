@@ -1,16 +1,19 @@
-package com.netcracker;
+package com.netcracker.servlets;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LoginServlet extends javax.servlet.http.HttpServlet {
-    protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+public class LoginServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         this.doGet(request, response);
     }
 
-    protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         String requiredPassword = "servlet";
@@ -23,7 +26,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
         Matcher matcher = name.matcher(login);
         sb.append("<html>");
         sb.append("<head>");
-        sb.append("<title>\"" + "Log in" +"\"</title>");
+        sb.append("<title>" + "Log in" + "</title>");
         sb.append("<link rel=\"stylesheet\" href=\"visual.css\"/>");
         sb.append("</head>");
         sb.append("<body>");
@@ -32,8 +35,8 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
         } else if (!requiredPassword.equals(password)) {
             sb.append("Password must be \"" + requiredPassword + "\"");
         } else {
-            sb.append("<center>We are glad to see you, " + "<b>" + login + "</b>" + "</center><br/>");
-            sb.append("<center>We are glad to see your password: " + "<b>" + password + "</b>" + "</center><br/>");
+            sb.append("<center>We are glad to see you, <b>" + login + "</b></center><br/>");
+            sb.append("<center>We are glad to see your password: <b>" + password + "</b></center><br/>");
             sb.append("<center><a href=\"/email.html\"><h1>Sent Email</h1></a></center>");
             sb.append("<center><a href=\"/info\"><h1>Get info</h1></a></center>");
         }

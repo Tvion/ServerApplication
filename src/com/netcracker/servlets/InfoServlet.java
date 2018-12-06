@@ -1,4 +1,4 @@
-package com.netcracker;
+package com.netcracker.servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,17 +11,17 @@ import java.util.Date;
 
 @WebServlet(name = "InfoServlet", urlPatterns = "/info")
 public class InfoServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response){
 
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String BrowserName = request.getHeader("User-Agent");
         Date date = new Date();
         PrintWriter pw = response.getWriter();
         StringBuilder sb = new StringBuilder();
         sb.append("<html>");
-        sb.append("<head> <link rel=\"stylesheet\" href=\"visual.css\"/></head>");
+        sb.append("<head> <link rel=\"stylesheet\" href=\"visual.css\"/><title>Information</title></head>");
         sb.append("<body>");
         sb.append("<div class=\"browser-info\">");
         sb.append("<b>Today</b> is " + date + "<br/>");

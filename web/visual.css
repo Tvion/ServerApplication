@@ -1,11 +1,13 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
-body{
+
+body {
     background-color: #f0f0f0;
 }
-.login-form{
+
+.login-form {
     display: block;
     width: 250px;
     height: 100px;
@@ -17,17 +19,17 @@ body{
     border-radius: 20px;
 }
 
-.form-field{
+.form-field {
     display: inline-block;
     float: right;
 }
 
-.submit-button{
+.submit-button {
     display: block;
     margin: 0 auto;
 }
 
-.browser-info{
+.browser-info {
     display: block;
     margin: 200px auto;
     padding: 5px 10px;
@@ -37,26 +39,28 @@ body{
     line-height: 40px;
 }
 
-.email{
+.email {
     height: 250px;
 }
 
-.message-label{
+.message-label {
     display: block;
     margin: 0 30%;
 }
 
-#text{
+#text {
     resize: none;
 }
 
-a{
+a {
     color: black;
     text-decoration: none;
 }
-a:hover{
+
+a:hover {
     color: bisque;
 }
-a:visited{
+
+a:visited {
     color: blueviolet;
 }
