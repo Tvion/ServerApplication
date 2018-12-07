@@ -1,5 +1,7 @@
 package com.netcracker.servlets;
 
+import com.netcracker.model.Sender;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -24,29 +26,9 @@ public class EmailServlet extends HttpServlet {
         String subject = request.getParameter("subject");
         String text = request.getParameter("text");
         String toEmail = request.getParameter("email");
-        Properties props = new Properties();
-        props.setProperty("mail.smtp.auth", "true");
-        props.setProperty("mail.smtp.starttls.enable", "true");
-        props.setProperty("mail.smtp.host", "smtp.gmail.com");
-        props.setProperty("mail.smtp.port", "587");
 
-        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username, password);
-            }
-        });
-
-        try {
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(username));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
-            message.setSubject(subject);
-            message.setText(text);
-
-            Transport.send(message);
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
-        }
+        Sender sender=new Sender(username,password);
+        sender.send(subject,text,toEmail);
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         String title = "Email Send";
