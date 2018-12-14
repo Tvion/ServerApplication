@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="visual.css"/>
-    <title>Login</title>
+    <title>Registration</title>
 </head>
 <body>
-<div class="login-form">
-<form action="/login" method="POST">
+<div class="login-form" style="background-color: #e3e22d">
+<form action="/registration" method="POST">
+    <center>Registration</center>
     <label for="login">Login:</label>
     <div class="form-field">
     <input id="login" type="text" name="login" autofocus>
@@ -15,11 +16,7 @@
     <div class="form-field">
     <input id="pwd" type="password" name="password" />
     </div>
-    <label for="check">Remember this user</label>
-    <div class="form-field">
-        <input id="check" type="checkbox" name="isSavedUser" checked>
-    </div>
-    <input class="submit-button" type="submit" value="Submit" />
+    <input class="submit-button" type="submit" value="Create" />
 </form>
 </div>
 </body>

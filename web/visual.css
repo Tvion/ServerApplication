@@ -10,7 +10,7 @@ body {
 .login-form {
     display: block;
     width: 250px;
-    height: 100px;
+    height: 150px;
     margin: 150px auto;
     padding: 5px 10px;
     background-color: aquamarine;
@@ -53,12 +53,12 @@ body {
 }
 
 a {
-    color: black;
+    color: dodgerblue;
     text-decoration: none;
 }
 
 a:hover {
-    color: bisque;
+    color: darkslategray;
 }
 
 a:visited {

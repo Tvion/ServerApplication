@@ -1,8 +1,6 @@
 package com.netcracker.model;
 
 import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class ResponseTextBuilder {
     public static String emailServletResponse() {
@@ -35,32 +33,35 @@ public class ResponseTextBuilder {
         return sb.toString();
     }
 
-    public static String loginServletResponse(String login, String password, String requiredPassword) {
+    public static String welcomeResponseServlet(String userName, String textValue) {
         StringBuilder sb = new StringBuilder();
-        Pattern name = Pattern.compile("^[a-zA-Z]{3,25}$");
-        Matcher matcher = name.matcher(login);
         sb.append("<html>");
-        sb.append("<head>");
-        sb.append("<title>" + "Log in" + "</title>");
-        sb.append("<link rel=\"stylesheet\" href=\"visual.css\"/>");
-        sb.append("</head>");
+        sb.append("<head> <link rel=\"stylesheet\" href=\"visual.css\"/><title>Information</title></head>");
         sb.append("<body>");
-        if (!matcher.matches()) {
-            sb.append("Name must contains 3-15 latin characters" + "<br/>");
-        } else if (!requiredPassword.equals(password)) {
-            sb.append("Password must be \"");
-            sb.append(requiredPassword);
-            sb.append("\"");
-        } else {
-            sb.append("<center>We are glad to see you, <b>");
-            sb.append(login);
-            sb.append("</b></center><br/>");
-            sb.append("<center>We are glad to see your password: <b>");
-            sb.append(password);
-            sb.append("</b></center><br/>");
-            sb.append("<center><a href=\"/email.html\"><h1>Sent Email</h1></a></center>");
-            sb.append("<center><a href=\"/info\"><h1>Get info</h1></a></center>");
+        sb.append("<div class=\"browser-info\">");
+        sb.append("<center>");
+        sb.append("<b>Hello</b>, ");
+        sb.append(userName);
+        sb.append("</center>");
+        sb.append("<br/>");
+        if (CookieWorker.findInUserList(userName)) {
+            sb.append("<div class=\"login-form\" style=\"margin: 0 auto\">\n" +
+                    "<form action=\"/welcome\" method=\"POST\">");
+            sb.append("<label for=\"text\">Saved text in session</label>");
+            sb.append("<br/>");
+            sb.append("<textarea id=\"text\" name=\"text\" rows=\"2\" cols=\"20\" placeholder=\"Text here...\">");
+            if (textValue != null) {
+                sb.append(textValue);
+            }
+            sb.append("</textarea>");
+            sb.append("<input class=\"submit-button\" type=\"submit\" value=\"Save\" />\n" +
+                    "</form></div>");
         }
+        sb.append("<br/>");
+        sb.append("<center><a class=\"\" href=\"/email.html\"><b>Send Email</b></a></center><br/>");
+        sb.append("<center><a class=\"\" href=\"/info\"><b>Browser Info</b></a></center><br/>");
+        sb.append("<br/>");
+        sb.append("</div>");
         sb.append("</body>");
         sb.append("</html>");
         return sb.toString();
