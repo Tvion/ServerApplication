@@ -14,11 +14,14 @@ import java.util.HashMap;
 public class LoginServlet extends HttpServlet {
 
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
         this.doGet(request, response);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+    //Если выбрана опция запомнить пользователя, то сохраняются введенные им данные и для последующего входа в
+    //течение сессии достаточно ввести его имя, а поле пароль оставить пустым
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         String appPath = request.getServletContext().getRealPath("");
@@ -28,12 +31,12 @@ public class LoginServlet extends HttpServlet {
 
         modelInit(UserOperations.userAttempts, login, cookies);
 
-        if (login == "" && password == "") {
+        if ("".equals(login) && "".equals(password)) {
             if (CookieWorker.getCurrentUser() != null)
                 response.sendRedirect("/welcome");
             return;
         }
-        if (login != "" && password == "" && CookieWorker.findInUserList(login)) {
+        if (!"".equals(login) && "".equals(password) && CookieWorker.findInUserList(login)) {
             CookieWorker.setCurrentUser(login);
             response.addCookie(new Cookie("userName", login));
             response.sendRedirect("/welcome");
@@ -45,7 +48,8 @@ public class LoginServlet extends HttpServlet {
 
 
     private void sendResponse(HttpServletResponse response, String isSavedUser, String login, UserOperations userOperations, HashMap<String, Integer> userAttempts) throws IOException {
-        int countOfAttempts = 3;
+
+        int countOfAttempts = 3; //Колличество попыток, после которых будет редирект на страницу смены пароля
 
         if (userOperations.hasUser()) {
             if (userOperations.validPassword()) {
@@ -82,13 +86,13 @@ public class LoginServlet extends HttpServlet {
     }
 
     private void modelInit(HashMap<String, Integer> userAttempts, String login, Cookie[] cookies) {
+
         if (!userAttempts.containsKey(login)) {
             userAttempts.put(login, 0);
         }
 
-        if (CookieWorker.userListToString().equals("") && cookies != null) {
-            String userNames = CookieWorker.getValueByName("userNames", cookies);
-            CookieWorker.setUserList(userNames);
-        }
+        String userNames = CookieWorker.getValueByName("userNames", cookies);
+        CookieWorker.setUserList(userNames);
+
     }
 }

@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "RegistrationServlet", urlPatterns = "/registration")
 public class RegistrationServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         String appPath = request.getServletContext().getRealPath("");
@@ -23,7 +23,7 @@ public class RegistrationServlet extends HttpServlet {
         pw.println(createUserState);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response){
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
 
     }
 }

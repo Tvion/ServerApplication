@@ -47,14 +47,14 @@ public class ResponseTextBuilder {
         if (CookieWorker.findInUserList(userName)) {
             sb.append("<div class=\"login-form\" style=\"margin: 0 auto\">\n" +
                     "<form action=\"/welcome\" method=\"POST\">");
-            sb.append("<label for=\"text\">Saved text in session</label>");
+            sb.append("<center><label for=\"text\">Saved text in session</label></center>");
             sb.append("<br/>");
-            sb.append("<textarea id=\"text\" name=\"text\" rows=\"2\" cols=\"20\" placeholder=\"Text here...\">");
+            sb.append("<center><textarea id=\"text\" name=\"text\" rows=\"2\" cols=\"20\" placeholder=\"Text here...\">");
             if (textValue != null) {
                 sb.append(textValue);
             }
-            sb.append("</textarea>");
-            sb.append("<input class=\"submit-button\" type=\"submit\" value=\"Save\" />\n" +
+            sb.append("</textarea></center>");
+            sb.append("<center><input class=\"submit-button\" type=\"submit\" value=\"Save\" /><center>\n" +
                     "</form></div>");
         }
         sb.append("<br/>");

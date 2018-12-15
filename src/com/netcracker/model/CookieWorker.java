@@ -18,6 +18,9 @@ public class CookieWorker {
     }
 
     public static String getValueByName(String name, Cookie[] cookies) {
+        if (cookies == null) {
+            return null;
+        }
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals(name)) {
                 return cookie.getValue();
@@ -27,11 +30,11 @@ public class CookieWorker {
     }
 
     public static void setUserList(String namesInCookie) {
+        userNames.clear();
         if (namesInCookie == null) {
             return;
         }
         String[] names = namesInCookie.split("-");
-        userNames.clear();
         Collections.addAll(userNames, names);
     }
 
