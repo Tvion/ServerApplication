@@ -23,7 +23,4 @@ public class RegistrationServlet extends HttpServlet {
         pw.println(createUserState);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-
-    }
 }
